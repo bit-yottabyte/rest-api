@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @GetMapping("/getAllUsers")
+    @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() {
         try {
             List<User> userList = new ArrayList<>();
@@ -33,7 +33,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/getUserByID/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         Optional<User> userData = userRepository.findById(id);
 
@@ -44,14 +44,14 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/users")
     public ResponseEntity<User> addUser(@RequestBody User user) {
         User userObj = userRepository.save(user);
 
         return new ResponseEntity<>(userObj, HttpStatus.OK);
     }
 
-    @PutMapping("/updateUserById/{id}")
+    @PutMapping("/users/{id}")
     public ResponseEntity<User> updateUserById(@PathVariable Long id, @RequestBody User newUserData) {
         Optional<User> oldUserData = userRepository.findById(id);
 
@@ -69,7 +69,7 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping("/deleteUserById/{id}")
+    @DeleteMapping("/users/{id}")
     public ResponseEntity<HttpStatus> deleteUserById(@PathVariable Long id) {
         userRepository.deleteById(id);
 
