@@ -17,6 +17,9 @@ public class User {
     private Long id;
 
     @Column
+    private String username;
+
+    @Column
     private String firstName;
 
     @Column
@@ -27,5 +30,5 @@ public class User {
 
     @Column
     private String phoneNumber;
-    
+
 }

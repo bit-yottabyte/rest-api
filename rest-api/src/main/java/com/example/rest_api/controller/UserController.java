@@ -57,6 +57,7 @@ public class UserController {
 
         if(oldUserData.isPresent()) {
             User updatedUserData = oldUserData.get();
+            updatedUserData.setUsername(newUserData.getUsername());
             updatedUserData.setFirstName(newUserData.getFirstName());
             updatedUserData.setLastName(newUserData.getLastName());
             updatedUserData.setEmail(newUserData.getEmail());
